@@ -19,7 +19,7 @@ class BestMoviesSpider(CrawlSpider):
             'title': response.xpath('//div[@class="title_wrapper"]/h1/text()').get(),
             'year': response.xpath('//span[@id="titleYear"]/a/text()').get(),
             'rating': response.xpath('//span[@itemprop = "ratingValue"]/text()').get(),
-            'duration': response.xpath('(//time)[1]/text()').get().replace("\n", "").replace(" ", "").replace("h", "h "),
+            'duration': response.xpath('normalize-space((//time)[1]/text())').get(),
             'genre': response.xpath('//div[@class="subtext"]/a[1]/text()').get(),
             'movie url': response.url,
             'trailer url': response.urljoin(response.xpath('//a[@class="slate_button prevent-ad-overlay video-modal"]/@href').get())
