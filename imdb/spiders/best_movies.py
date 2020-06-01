@@ -22,5 +22,5 @@ class BestMoviesSpider(CrawlSpider):
             'duration': response.xpath('normalize-space((//time)[1]/text())').get(),
             'genre': response.xpath('//div[@class="subtext"]/a[1]/text()').get(),
             'movie url': response.url,
-            'trailer url': response.urljoin(response.xpath('//a[@class="slate_button prevent-ad-overlay video-modal"]/@href').get())
+            'trailer url': response.urljoin(response.xpath('//a[@class="slate_button prevent-ad-overlay video-modal"]/@href').get()),
         }
